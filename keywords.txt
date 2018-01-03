@@ -1,0 +1,25 @@
+#######################################
+# KeyDB Syntax Coloring
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+KeyDB	KEYWORD1	KeyDB
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+count	KEYWORD2
+addKey	KEYWORD2
+loadKeys	KEYWORD2
+saveKeys	KEYWORD2
+removeKey	KEYWORD2
+keyExists	KEYWORD2
+keyLengthen	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
