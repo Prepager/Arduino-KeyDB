@@ -7,7 +7,7 @@
 #define DB_KEY_LENGTH 8
 
 // Include Arduino and EEPROM libraries.
-#include "Arduino.h"
+#include <Arduino.h>
 #include <EEPROM.h>
 
 // Start class declaration.
