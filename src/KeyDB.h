@@ -25,6 +25,10 @@ class KeyDB {
 
         String keyLengthen(String key);
         String keys[DB_KEY_MAX] = {""};
+    
+    private:
+        int keyMax = DB_KEY_MAX;
+        int keyLength = DB_KEY_LENGTH;
 };
 
 #endif

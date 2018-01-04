@@ -28,7 +28,7 @@ void KeyDB::loadKeys() {
     int position = 1;
     for (int i = 0; i < count; i++) {
         // Loop through the key char length.
-        for(int k = 0; k < DB_KEY_LENGTH; k++) {
+        for(int k = 0; k < this->keyLength; k++) {
             // Add read char to key string.
             char readChar = char(EEPROM.read(position));
             this->keys[i].concat(readChar);
@@ -46,13 +46,13 @@ void KeyDB::saveKeys() {
     // Loop through the key list.
     int keys = 0;
     int position = 1;
-    for (int i = 0; i < DB_KEY_MAX; i++) {
+    for (int i = 0; i < this->keyMax; i++) {
         // Break out of array if empty.
         if (this->keys[i] == "")
             break;
 
         // Loop through the key char length.
-        for(int k = 0; k < DB_KEY_LENGTH; k++) {
+        for(int k = 0; k < this->keyLength; k++) {
             // Write key char to storage.
             EEPROM.update(position, this->keys[i][k]);
 
@@ -82,10 +82,10 @@ void KeyDB::addKey(String key) {
     this->keys[keys] = key;
 
     // Find position for next input.
-    int position = (keys * DB_KEY_LENGTH) + 1;
+    int position = (keys * this->keyLength) + 1;
 
     // Loop through the key char length.
-    for(int k = 0; k < DB_KEY_LENGTH; k++) {
+    for(int k = 0; k < this->keyLength; k++) {
         // Write key char to storage.
         EEPROM.update(position, this->keys[keys][k]);
 
@@ -108,7 +108,7 @@ void KeyDB::removeKey(String key) {
 
     // Loop through keys.
     int shifting = 0;
-    for (int i = 0; i < DB_KEY_MAX; i++) {
+    for (int i = 0; i < this->keyMax; i++) {
         // Shift indexes if shifting.
         if (shifting) 
             this->keys[i - 1] = this->keys[i];
@@ -137,7 +137,7 @@ bool KeyDB::keyExists(String key) {
     key = this->keyLengthen(key);
 
     // Loop through keys.
-    for (int i = 0; i < DB_KEY_MAX; i++) {
+    for (int i = 0; i < this->keyMax; i++) {
         // Return out of array if empty.
         if (this->keys[i] == "")
             return false;
@@ -157,7 +157,7 @@ bool KeyDB::keyExists(String key) {
  */
 String KeyDB::keyLengthen(String key) {
     // Add zeros untill correct char length.
-    while (key.length() < DB_KEY_LENGTH) {
+    while (key.length() < this->keyLength) {
         key = '0' + key;
     }
 
