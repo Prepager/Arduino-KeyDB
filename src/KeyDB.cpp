@@ -140,11 +140,11 @@ bool KeyDB::keyExists(String key) {
     for (int i = 0; i < DB_KEY_MAX; i++) {
         // Return out of array if empty.
         if (this->keys[i] == "")
-            return true;
+            return false;
 
         // Return found status if same key.
         if (this->keys[i] == key) {
-            return false;
+            return true;
         }
     }
 }
