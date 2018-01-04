@@ -77,6 +77,10 @@ void KeyDB::addKey(String key) {
     // Make key fixed length.
     key = this->keyLengthen(key);
 
+    // Return if already exists.
+    if (this->keyExists(key))
+        return;
+
     // Set index to new value.
     int keys = this->count();
     this->keys[keys] = key;
